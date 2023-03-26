@@ -1,21 +1,28 @@
-function receiveAFunction(callback){
-    //call the callback function
-    callback();
+const returnFirstTwoDrivers = function(drivers){
+    return drivers.slice(0,2);
 }
-console.log("General energy")
 
-function theReturnFunction(){
-//return a named function
-return function namedFunction(){
-    return "The antelope"
+const returnLastTwoDrivers = function(drivers){
+    return drivers.slice(-2);
 }
-}
-console.log(theReturnFunction())
 
-function anonymousFunction(){
-    //return an anonymous function
-    return function(){
-        return "The great hunt!"
+//array of the above functions
+const selectDrivers = [returnFirstTwoDrivers, returnLastTwoDrivers];
+
+const quadrapleFare = function createFareMultiplier(integer){
+    return function(fare){
+        return fare*integer;
     }
 }
-console.log(anonymousFunction);
+
+//fare doubler
+const doubledFare = createFareMultiplier(2);
+
+//fare tripler
+const tripleFare = createFareMultiplier(3);
+
+//return select drivers from either of the two functions
+function selectDrivers(drivers, func){
+    return func (drivers);
+}
+
